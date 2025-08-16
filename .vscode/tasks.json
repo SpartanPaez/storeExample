@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "start-dev-6000",
+			"command": "npm run dev",
+			"args": [
+				"-p",
+				"6000"
+			],
+			"isBackground": true,
+			"group": "build"
+		}
+	]
+}
