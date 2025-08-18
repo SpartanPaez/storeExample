@@ -5,12 +5,12 @@ import { API_BASE_URL } from "../apiConfig";
 import { useRouter } from "next/navigation";
 
 export default function CartPage() {
-  const { cart, clearCart, removeFromCart, addToCart } = useCart();
+  const { cart, removeFromCart, addToCart } = useCart();
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phoneNumber: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const router = useRouter();
+  // const router = useRouter();
 
 
 
@@ -93,8 +93,12 @@ export default function CartPage() {
       if (!data.url) throw new Error("Respuesta inesperada de AdamsPay");
       // Redirigir al usuario al link de pago
       window.location.href = data.url;
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Error desconocido");
+      }
     } finally {
       setLoading(false);
     }

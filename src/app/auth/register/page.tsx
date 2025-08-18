@@ -24,8 +24,12 @@ export default function RegisterPage() {
       if (!res.ok) throw new Error("Error al registrar");
       setSuccess("¡Registro exitoso! Ahora puedes iniciar sesión.");
       setTimeout(() => router.push("/auth/login"), 2000);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Error desconocido");
+      }
     } finally {
       setLoading(false);
     }

@@ -7,12 +7,12 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   // AdamsPay puede enviar distintos parámetros según el flujo
   const status = searchParams.get("status");
-  const orderId = searchParams.get("orderId");
-  const intent = searchParams.get("intent");
-  const merchant = searchParams.get("merchant");
-  const app = searchParams.get("app");
-  const type = searchParams.get("type");
-  const doc_id = searchParams.get("doc_id");
+  // const orderId = searchParams.get("orderId");
+  // const intent = searchParams.get("intent");
+  // const merchant = searchParams.get("merchant");
+  // const app = searchParams.get("app");
+  // const type = searchParams.get("type");
+  // const doc_id = searchParams.get("doc_id");
 
   let redirectUrl = "/?";
   if (status === "success") {

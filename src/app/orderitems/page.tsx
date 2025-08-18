@@ -1,11 +1,19 @@
 import React from "react";
 import { getOrderItems } from "../apiService";
 
+type OrderItem = {
+  id: number;
+  orderId: number;
+  productName: string;
+  quantity: number;
+  price: number;
+};
+
 export default async function OrderItemsPage() {
-  let items: any[] = [];
+  let items: OrderItem[] = [];
   try {
     items = await getOrderItems();
-  } catch (e) {
+  } catch (_e) {
     // Error handling
   }
   return (

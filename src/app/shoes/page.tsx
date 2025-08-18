@@ -1,11 +1,20 @@
 import React from "react";
 import { getShoes } from "../apiService";
 
+type Shoe = {
+  id: number;
+  model: string;
+  brand: string;
+  price: number;
+  stock: number;
+  season: string;
+};
+
 export default async function ShoesPage() {
-  let shoes: any[] = [];
+  let shoes: Shoe[] = [];
   try {
-    shoes = await require("../apiService").getShoes();
-  } catch (e) {
+    shoes = await getShoes();
+  } catch (_e) {
     // Error handling
   }
   return (

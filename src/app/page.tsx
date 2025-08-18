@@ -1,12 +1,21 @@
 "use client";
 import { useEffect, useState } from "react";
+
+type Shoe = {
+  id: number;
+  model: string;
+  brand: string;
+  price: number;
+  stock: number;
+  season: string;
+};
 import { useSearchParams } from "next/navigation";
 import { useCart } from "./CartContext";
 import { API_BASE_URL } from "./apiConfig";
 
 export default function Home() {
   const searchParams = useSearchParams();
-  const [shoes, setShoes] = useState<any[]>([]);
+  const [shoes, setShoes] = useState<Shoe[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>("");
   const { addToCart } = useCart();
@@ -46,7 +55,7 @@ export default function Home() {
     return new Intl.NumberFormat('es-PY', { style: 'currency', currency: 'PYG', maximumFractionDigits: 0 }).format(value);
   }
 
-  function handleAddToCart(shoe: any) {
+  function handleAddToCart(shoe: Shoe) {
     addToCart({ id: shoe.id, name: shoe.model, brand: shoe.brand, price: shoe.price, quantity: 1 });
     setNotifText(`¡${shoe.model} agregado al carrito!`);
     setShowNotif(true);

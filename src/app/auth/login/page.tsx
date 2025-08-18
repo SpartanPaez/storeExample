@@ -38,8 +38,12 @@ export default function LoginPage() {
       const redirectTo = localStorage.getItem("redirectAfterLogin") || "/";
       localStorage.removeItem("redirectAfterLogin");
       router.push(redirectTo);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Error desconocido");
+      }
     } finally {
       setLoading(false);
     }

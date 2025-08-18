@@ -1,11 +1,19 @@
 import React from "react";
 import { getOrders } from "../apiService";
 
+type Order = {
+  id: number;
+  customerId: number;
+  customerName: string;
+  date: string;
+  total: number;
+};
+
 export default async function OrdersPage() {
-  let orders: any[] = [];
+  let orders: Order[] = [];
   try {
     orders = await getOrders();
-  } catch (e) {
+  } catch (_e) {
     // Error handling
   }
   return (
