@@ -17,11 +17,32 @@ export default function CartPage() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const formatPYG = (value: number) => new Intl.NumberFormat('es-PY', { style: 'currency', currency: 'PYG', maximumFractionDigits: 0 }).format(value);
 
+  function validateForm() {
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,}$/.test(form.firstName)) {
+      setError("El nombre solo debe contener letras y tener al menos 2 caracteres.");
+      return false;
+    }
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,}$/.test(form.lastName)) {
+      setError("El apellido solo debe contener letras y tener al menos 2 caracteres.");
+      return false;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) {
+      setError("El email no es válido.");
+      return false;
+    }
+    if (!/^\d{7,}$/.test(form.phoneNumber)) {
+      setError("El teléfono debe contener solo números y al menos 7 dígitos.");
+      return false;
+    }
+    return true;
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
     setError("");
     setSuccess("");
+    if (!validateForm()) return;
+    setLoading(true);
     try {
       // Obtener el customerId del localStorage
       const customerId = localStorage.getItem("customerId");

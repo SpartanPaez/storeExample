@@ -1,11 +1,27 @@
 
+
 "use client";
 import Link from "next/link";
 import { useCart } from "./CartContext";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const { cart } = useCart();
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsLogged(!!localStorage.getItem("token"));
+    }
+  }, []);
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("customerId");
+    window.location.href = "/";
+  }
+
   return (
     <nav className="relative bg-gradient-to-r from-gray-950 via-blue-950 to-cyan-900/80 border-b border-blue-900/40 py-4 px-8 flex justify-between items-center shadow-xl backdrop-blur-md">
       <div className="flex items-center gap-3">
@@ -26,9 +42,15 @@ export default function Navbar() {
             )}
           </Link>
         </li>
-        <li>
-          <Link href="/auth/login" className="hover:text-cyan-300 transition font-semibold">Ingresar</Link>
-        </li>
+        {!isLogged ? (
+          <li>
+            <Link href="/auth/login" className="hover:text-cyan-300 transition font-semibold">Ingresar</Link>
+          </li>
+        ) : (
+          <li>
+            <button onClick={handleLogout} className="hover:text-cyan-300 transition font-semibold bg-transparent border-none cursor-pointer">Salir</button>
+          </li>
+        )}
       </ul>
     </nav>
   );
