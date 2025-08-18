@@ -72,7 +72,7 @@ function HomeContent() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto py-12 px-4 relative">
+    <div className="max-w-6xl mx-auto py-6 px-2 sm:py-10 sm:px-4 relative">
       {/* Notificación flotante */}
       {showNotif && (
         <div className={`fixed top-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-6 py-3 rounded-xl shadow-2xl ring-2 animate-fade-in-out ${notifType === "success" ? "bg-gradient-to-r from-green-500 via-emerald-600 to-green-800 text-white ring-green-300/40" : "bg-gradient-to-r from-red-500 via-pink-600 to-pink-800 text-white ring-pink-300/40"}`}>
@@ -92,25 +92,25 @@ function HomeContent() {
       ) : shoes.length === 0 ? (
         <div className="text-gray-400 text-center">No hay zapatos disponibles.</div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {shoes.map((shoe) => (
-            <div key={shoe.id} className="bg-gray-900 rounded-lg shadow-lg p-6 flex flex-col items-center">
-              <div className="w-32 h-32 bg-gray-800 rounded mb-4 flex items-center justify-center">
+            <div key={shoe.id} className="bg-gray-900 rounded-lg shadow-lg p-4 sm:p-6 flex flex-col items-center w-full max-w-xs mx-auto">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 bg-gray-800 rounded mb-3 flex items-center justify-center">
                 {/* Imagen placeholder */}
                 <span className="text-6xl text-gray-700">👟</span>
               </div>
-              <h2 className="text-xl font-semibold text-gray-100 mb-2">{shoe.model}</h2>
-              <p className="text-gray-400 mb-2">Marca: {shoe.brand}</p>
-              <p className="text-gray-400 mb-2">Temporada: {shoe.season}</p>
-              <p className="text-gray-400 mb-2">Stock: {shoe.stock}</p>
-              <p className="text-gray-200 font-bold mb-4">{formatPYG(shoe.price)}</p>
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-100 mb-1 sm:mb-2 text-center break-words">{shoe.model}</h2>
+              <p className="text-gray-400 mb-1 sm:mb-2 text-xs sm:text-sm">Marca: {shoe.brand}</p>
+              <p className="text-gray-400 mb-1 sm:mb-2 text-xs sm:text-sm">Temporada: {shoe.season}</p>
+              <p className="text-gray-400 mb-1 sm:mb-2 text-xs sm:text-sm">Stock: {shoe.stock}</p>
+              <p className="text-gray-200 font-bold mb-2 sm:mb-4 text-base sm:text-lg">{formatPYG(shoe.price)}</p>
               <button
-                className="bg-gradient-to-r from-cyan-500 via-blue-600 to-blue-800 hover:from-cyan-400 hover:to-blue-700 text-white font-semibold py-2 px-6 rounded shadow-lg transition-all duration-200 active:scale-95 ring-2 ring-cyan-300/40"
+                className="w-full bg-gradient-to-r from-cyan-500 via-blue-600 to-blue-800 hover:from-cyan-400 hover:to-blue-700 text-white font-semibold py-2 px-2 sm:px-6 rounded shadow-lg transition-all duration-200 active:scale-95 ring-2 ring-cyan-300/40 text-sm sm:text-base"
                 onClick={() => handleAddToCart(shoe)}
                 disabled={shoe.stock < 1}
               >
                 {shoe.stock > 0 ? (
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center justify-center gap-2">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
                     Agregar al carrito
                   </span>

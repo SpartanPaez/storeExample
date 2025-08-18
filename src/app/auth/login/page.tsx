@@ -50,14 +50,14 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-950 via-gray-900 to-blue-950 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-950 via-gray-900 to-blue-950 relative overflow-hidden px-2 sm:px-0">
       {/* Glassmorphism y brillos sutiles */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-blue-500/20 via-cyan-400/10 to-blue-900/10 rounded-full blur-3xl animate-pulse z-0" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tr from-cyan-400/10 via-blue-400/10 to-blue-900/20 rounded-full blur-2xl animate-blob z-0" />
-      <form onSubmit={handleSubmit} className="relative bg-white/10 bg-clip-padding p-10 rounded-3xl shadow-2xl w-full max-w-md flex flex-col gap-8 border border-blue-700/30 backdrop-blur-[18px] ring-2 ring-blue-500/20 before:absolute before:inset-0 before:rounded-3xl before:bg-white/10 before:backdrop-blur-[20px] before:pointer-events-none before:z-10">
-        <div className="flex flex-col items-center mb-2 z-20">
+      <div className="absolute -top-32 -left-32 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-blue-500/20 via-cyan-400/10 to-blue-900/10 rounded-full blur-3xl animate-pulse z-0" />
+      <div className="absolute bottom-0 right-0 w-56 h-56 sm:w-80 sm:h-80 bg-gradient-to-tr from-cyan-400/10 via-blue-400/10 to-blue-900/20 rounded-full blur-2xl animate-blob z-0" />
+      <form onSubmit={handleSubmit} className="relative bg-white/10 bg-clip-padding p-5 sm:p-10 rounded-3xl shadow-2xl w-full max-w-xs sm:max-w-md flex flex-col gap-6 sm:gap-8 border border-blue-700/30 backdrop-blur-[18px] ring-2 ring-blue-500/20 before:absolute before:inset-0 before:rounded-3xl before:bg-white/10 before:backdrop-blur-[20px] before:pointer-events-none before:z-10">
+        <div className="flex flex-col items-center mb-1 sm:mb-2 z-20">
           <div className="relative">
-            <div className="absolute -top-2 -left-2 w-12 h-12 bg-gradient-to-tr from-cyan-400/40 to-blue-400/30 rounded-full blur-lg animate-pulse" />
+            <div className="absolute -top-2 -left-2 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-tr from-cyan-400/40 to-blue-400/30 rounded-full blur-lg animate-pulse" />
             <div className="bg-gradient-to-tr from-blue-500 via-cyan-400 to-blue-700 rounded-full p-3 mb-3 shadow-2xl animate-pulse border-2 border-white/20">
               <svg width="36" height="36" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="#e0f2fe"/><ellipse cx="12" cy="18" rx="8" ry="4" fill="#bae6fd"/></svg>
             </div>

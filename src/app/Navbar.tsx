@@ -23,17 +23,21 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="relative bg-gradient-to-r from-gray-950 via-blue-950 to-cyan-900/80 border-b border-blue-900/40 py-4 px-8 flex justify-between items-center shadow-xl backdrop-blur-md">
-      <div className="flex items-center gap-3">
-        <span className="inline-block w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-400 via-blue-500 to-blue-800 shadow-lg animate-pulse" />
-        <span className="text-2xl font-extrabold bg-gradient-to-r from-cyan-300 via-blue-300 to-white bg-clip-text text-transparent drop-shadow-lg tracking-tight">Spartan Store</span>
+    <nav className="relative bg-gradient-to-r from-gray-950 via-blue-950 to-cyan-900/80 border-b border-blue-900/40 py-2 px-2 sm:py-4 sm:px-8 flex flex-wrap justify-between items-center shadow-xl backdrop-blur-md">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <span className="inline-block w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-cyan-400 via-blue-500 to-blue-800 shadow-lg animate-pulse" />
+        <span className="text-lg sm:text-2xl font-extrabold bg-gradient-to-r from-cyan-300 via-blue-300 to-white bg-clip-text text-transparent drop-shadow-lg tracking-tight">Spartan Store</span>
       </div>
-      <ul className="flex gap-8 text-blue-100 font-medium">
+      <input id="nav-toggle" type="checkbox" className="hidden peer" />
+      <label htmlFor="nav-toggle" className="sm:hidden flex items-center cursor-pointer ml-auto mr-2">
+        <svg className="w-7 h-7 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </label>
+      <ul className="flex-col sm:flex-row gap-2 sm:gap-8 text-blue-100 font-medium w-full sm:w-auto sm:static absolute left-0 right-0 top-full bg-gradient-to-r from-gray-950 via-blue-950 to-cyan-900/95 sm:bg-none z-40 hidden peer-checked:flex sm:flex p-4 sm:p-0 rounded-b-xl sm:rounded-none shadow-lg sm:shadow-none">
         <li>
-          <Link href="/" className="hover:text-cyan-300 transition font-semibold">Catálogo</Link>
+          <Link href="/" className="block py-2 px-2 sm:p-0 hover:text-cyan-300 transition font-semibold">Catálogo</Link>
         </li>
         <li className="relative">
-          <Link href="/cart" className="hover:text-cyan-300 transition font-semibold flex items-center gap-1">
+          <Link href="/cart" className="py-2 px-2 sm:p-0 hover:text-cyan-300 transition font-semibold flex items-center gap-1">
             Carrito
             {totalItems > 0 && (
               <span className="ml-1 inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold leading-none text-white bg-gradient-to-r from-cyan-500 to-blue-700 rounded-full shadow ring-2 ring-cyan-300/40 animate-bounce">
@@ -44,11 +48,11 @@ export default function Navbar() {
         </li>
         {!isLogged ? (
           <li>
-            <Link href="/auth/login" className="hover:text-cyan-300 transition font-semibold">Ingresar</Link>
+            <Link href="/auth/login" className="block py-2 px-2 sm:p-0 hover:text-cyan-300 transition font-semibold">Ingresar</Link>
           </li>
         ) : (
           <li>
-            <button onClick={handleLogout} className="hover:text-cyan-300 transition font-semibold bg-transparent border-none cursor-pointer">Salir</button>
+            <button onClick={handleLogout} className="block py-2 px-2 sm:p-0 hover:text-cyan-300 transition font-semibold bg-transparent border-none cursor-pointer">Salir</button>
           </li>
         )}
       </ul>
