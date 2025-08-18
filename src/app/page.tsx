@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
 type Shoe = {
   id: number;
@@ -13,7 +13,16 @@ import { useSearchParams } from "next/navigation";
 import { useCart } from "./CartContext";
 import { API_BASE_URL } from "./apiConfig";
 
+
 export default function Home() {
+  return (
+    <Suspense fallback={<div className="text-center text-gray-300 py-12">Cargando...</div>}>
+      <HomeContent />
+    </Suspense>
+  );
+}
+
+function HomeContent() {
   const searchParams = useSearchParams();
   const [shoes, setShoes] = useState<Shoe[]>([]);
   const [loading, setLoading] = useState(true);
