@@ -130,7 +130,7 @@ function HomeContent() {
       `}</style>
             </div>
           ))}
-        </div>
+      </div>
       )}
     </div>
   );
